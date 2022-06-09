@@ -6,9 +6,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 @Entity
@@ -16,30 +16,40 @@ import lombok.ToString;
 @ToString @EqualsAndHashCode
 public class Usuario {
 	
-	@Id @Column(name = "idUsuario")
+	@Id
+	@Column(name = "idusuario")
+	@Getter @Setter
 	private Long idUsuario;
-
-	@NotBlank
-	private String nombre;
 	
-	@NotBlank
+	@Column(name = "nombre")
+	@Getter @Setter
+	private String nombre;
+
+	@Column(name = "apellido")
+	@Getter @Setter
 	private String apellido;
 	
-	@NotBlank
+	@Column(name = "email")
+	@Getter @Setter
 	private String email;
 	
+	@Column(name = "telefono")
+	@Getter @Setter
 	private String telefono;
 	
+	@Column(name = "username")
+	@Getter @Setter
 	private String username;
 	
+	@Column(name = "password")
+	@Getter @Setter
 	private String password;
 	
 	@ManyToOne
 	@JoinColumn(name = "rol_usuario")
 	private RolUsuario rol;
 	
-	public Usuario(Long idUsuario, String nombre, String apellido, String email, String telefono, String username, String password, RolUsuario rol) {
-		this.idUsuario = idUsuario;
+	public Usuario(String nombre, String apellido, String email, String telefono, String username, String password, RolUsuario rol) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.email = email;

@@ -6,7 +6,6 @@ import ar.edu.utn.frba.redlink.sistemaGestionCompras.service.UsuarioService;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = "*")
-@RequestMapping("/api/usuarios/")
 public class UsuarioController {
 
 	@Autowired
@@ -26,7 +23,7 @@ public class UsuarioController {
 		return usuarioService.crear(usuario);
 	}
 
-	@GetMapping("/listar")
+	@RequestMapping("/listar")
 	public List<Usuario> listarUsuarios() {
 		return usuarioService.listar();
 	}

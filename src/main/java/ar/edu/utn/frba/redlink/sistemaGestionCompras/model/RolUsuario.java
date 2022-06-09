@@ -5,18 +5,22 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
 @Entity
 @Table(name = "rolusuario")
+@ToString @EqualsAndHashCode
 public class RolUsuario {
 
 	@Id @Column(name = "id")
 	private Long idRol;
 
+	@Column(name = "nombre")
 	private String rol;
-// estaria bueno que el id rol se incremente de forma ascendente automaticamente. //identity 
-	public RolUsuario(Long i, String rol) {
+
+	public RolUsuario(String rol) {
 		super();
-		this.idRol = i;
 		this.rol=rol;
 	}
 	public RolUsuario() {
@@ -35,7 +39,4 @@ public class RolUsuario {
 		this.rol = rol;
 	}
 	
-	
-	
-
 }

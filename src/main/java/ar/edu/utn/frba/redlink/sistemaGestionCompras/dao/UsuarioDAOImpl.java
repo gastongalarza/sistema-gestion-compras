@@ -33,7 +33,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	@Override
 	public List<Usuario> findAll() {
 		String query = "FROM Usuario";
-		return entityManager.createQuery(query).getResultList();
+		return entityManager.createQuery(query, Usuario.class).getResultList();
 	}
 
 	@Override
