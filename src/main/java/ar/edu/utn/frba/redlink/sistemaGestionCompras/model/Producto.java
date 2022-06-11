@@ -1,18 +1,29 @@
 package ar.edu.utn.frba.redlink.sistemaGestionCompras.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-
+@Entity
+@Table(name="producto")
 public class Producto {
 	
+	@Id
+	@Column(name = "idproducto")
 	private int idProducto;
 	
+	@Column(name = "nombre")
 	private String nombre;
 //  private InputStream foto;
 	
+	@Column(name = "descripcion")
 	private String descripcion;
 	
+	@Column(name = "precio")
 	private double precio;
 
+	@Column(name = "stock")
 	private int stock;
 	
 	public Producto(int id, String nombre, String descripcion, double precio, int stock) {

@@ -1,17 +1,31 @@
 package ar.edu.utn.frba.redlink.sistemaGestionCompras.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="item")
 public class Item {
 
+	@Id
+	@Column(name="id")
 	private int id;
 
+	@Column(name="producto")
 	private Producto producto;
 
+	@Column(name="nombre")
 	private String nombre;
 
+	@Column(name="descripcion")
 	private String descripcion;
 
+	@Column(name="cantidad")
 	private int cantidad;
 
+	@Column(name="subtotal")
 	private double subTotal;
 
 	public Item() {
