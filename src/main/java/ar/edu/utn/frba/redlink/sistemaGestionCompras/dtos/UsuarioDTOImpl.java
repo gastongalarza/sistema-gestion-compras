@@ -1,4 +1,4 @@
-package ar.edu.utn.frba.redlink.sistemaGestionCompras.dao;
+package ar.edu.utn.frba.redlink.sistemaGestionCompras.dtos;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import ar.edu.utn.frba.redlink.sistemaGestionCompras.model.Usuario;
 
 @Repository
 @Transactional
-public class UsuarioDAOImpl implements UsuarioDAO {
+public class UsuarioDTOImpl implements UsuarioDTO {
 	
 //	private RolUsuario rol1 = new RolUsuario(1L,"Administrador");
 //	private Usuario myuser1 = new Usuario(1L,"gaston","galarza","gastonhernangalarza@gmail.com","02224472266","gasgala","1234",rol1);
@@ -21,7 +21,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	@PersistenceContext
 	EntityManager entityManager;
 
-	public UsuarioDAOImpl() {
+	public UsuarioDTOImpl() {
 		super();
 	}
 
@@ -42,7 +42,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	}
 
 	@Override
-	public Usuario findById(Long id) {
+	public Usuario findById(Integer id) {
 		return null;
 	}
 

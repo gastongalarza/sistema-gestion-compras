@@ -1,6 +1,6 @@
 package ar.edu.utn.frba.redlink.sistemaGestionCompras.service;
 
-import ar.edu.utn.frba.redlink.sistemaGestionCompras.dao.CarritoDAO;
+import ar.edu.utn.frba.redlink.sistemaGestionCompras.dtos.CarritoDTO;
 import ar.edu.utn.frba.redlink.sistemaGestionCompras.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class CarritoServiceImpl implements CarritoService {
 	
 	@Autowired
-	private CarritoDAO carritoDAO;
+	private CarritoDTO carritoDAO;
 	
 	public CarritoServiceImpl() {
 

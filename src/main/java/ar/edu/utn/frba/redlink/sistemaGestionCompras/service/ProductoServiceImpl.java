@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ar.edu.utn.frba.redlink.sistemaGestionCompras.dao.ProductoDAO;
+import ar.edu.utn.frba.redlink.sistemaGestionCompras.dtos.ProductoDTO;
 import ar.edu.utn.frba.redlink.sistemaGestionCompras.model.Producto;
 
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
 public class ProductoServiceImpl implements ProductoService {
 	
 	@Autowired
-	private ProductoDAO productoDAO;
+	private ProductoDTO productoDAO;
 
 	public ProductoServiceImpl() {
 
@@ -39,7 +39,7 @@ public class ProductoServiceImpl implements ProductoService {
 	@Override
 	@Transactional(readOnly = true)
 	public Producto buscarProducto(Producto producto) {
-		return productoDAO.findById(producto.getIdProducto());
+		return productoDAO.findById(producto.getId());
 	}
 
 }

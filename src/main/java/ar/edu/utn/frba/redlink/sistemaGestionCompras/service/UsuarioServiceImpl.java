@@ -6,15 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ar.edu.utn.frba.redlink.sistemaGestionCompras.dao.*;
-
+import ar.edu.utn.frba.redlink.sistemaGestionCompras.dtos.*;
 import ar.edu.utn.frba.redlink.sistemaGestionCompras.model.Usuario;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
 	
 	@Autowired
-	private UsuarioDAO usuarioDAO;
+	private UsuarioDTO usuarioDAO;
 
 	
 	@Override
@@ -36,7 +35,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	@Transactional(readOnly = true)
 	public Usuario encontrarUsuario(Usuario usuario) {
-		return usuarioDAO.findById(usuario.getIdUsuario());
+		return usuarioDAO.findById(usuario.getId());
 	}
 
 }

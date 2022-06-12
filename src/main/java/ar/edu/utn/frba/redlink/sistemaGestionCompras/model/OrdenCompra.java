@@ -8,13 +8,18 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name = "orden")
 public class OrdenCompra {
 
 	@Id
 	@Column(name="id")
-	private int idOrden;
+	private Integer idOrden;
 
 	@Column(name="fecha")
 	private Date fechaOrden;
@@ -29,7 +34,7 @@ public class OrdenCompra {
 	private Usuario usuario;
 	
 	
-	public OrdenCompra(int idOrden, Date fechaOrden, Carrito carrito,List<Item> items, Usuario usuario) {
+	public OrdenCompra(Integer idOrden, Date fechaOrden, Carrito carrito,List<Item> items, Usuario usuario) {
 		super();
 		this.idOrden = idOrden;
 		this.fechaOrden = fechaOrden;
@@ -40,47 +45,5 @@ public class OrdenCompra {
 	
 	public OrdenCompra() {
 	}
-
-	public int getIdOrden() {
-		return idOrden;
-	}
-
-	public void setIdOrden(int idOrden) {
-		this.idOrden = idOrden;
-	}
-
-	public Date getFechaOrden() {
-		return fechaOrden;
-	}
-
-	public void setFechaOrden(Date fechaOrden) {
-		this.fechaOrden = fechaOrden;
-	}
-
-	public Carrito getCarrito() {
-		return carrito;
-	}
-
-	public void setCarrito(Carrito carrito) {
-		this.carrito = carrito;
-	}
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	public List<Item> getItems() {
-		return items;
-	}
-
-	public void setItems(List<Item> items) {
-		this.items = items;
-	}
-	
-	
 
 }

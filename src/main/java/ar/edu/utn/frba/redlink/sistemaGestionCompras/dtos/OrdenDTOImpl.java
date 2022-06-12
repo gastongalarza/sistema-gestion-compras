@@ -1,12 +1,12 @@
-package ar.edu.utn.frba.redlink.sistemaGestionCompras.dao;
+package ar.edu.utn.frba.redlink.sistemaGestionCompras.dtos;
 
 import java.util.List;
 
 import ar.edu.utn.frba.redlink.sistemaGestionCompras.model.OrdenCompra;
 
-public class OrdenDAOImpl implements OrdenDAO{
+public class OrdenDTOImpl implements OrdenDTO{
 
-	public OrdenDAOImpl() {
+	public OrdenDTOImpl() {
 	}
 
 	@Override

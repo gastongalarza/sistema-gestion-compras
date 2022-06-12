@@ -1,4 +1,4 @@
-package ar.edu.utn.frba.redlink.sistemaGestionCompras.dao;
+package ar.edu.utn.frba.redlink.sistemaGestionCompras.dtos;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -7,9 +7,9 @@ import ar.edu.utn.frba.redlink.sistemaGestionCompras.model.Item;
 
 @Repository
 @Transactional
-public class CarritoDAOImpl implements CarritoDAO {
+public class CarritoDTOImpl implements CarritoDTO {
 
-	public CarritoDAOImpl() {
+	public CarritoDTOImpl() {
 		// TODO Auto-generated constructor stub
 	}
 

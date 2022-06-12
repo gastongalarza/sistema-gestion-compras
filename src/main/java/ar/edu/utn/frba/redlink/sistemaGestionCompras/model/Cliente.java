@@ -1,22 +1,29 @@
 package ar.edu.utn.frba.redlink.sistemaGestionCompras.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 import lombok.Getter;
 import lombok.Setter;
 
-
-@Setter
 @Getter
-@MappedSuperclass
-public abstract class Usuario {
+@Setter
+@Entity
+@Table(name = "cliente")
+public class Cliente extends Usuario {
 	
-    @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+	@Column(name = "nombre")
+	private Long idUsuario;
 	
 	@Column(name = "nombre")
 	private String nombre;
@@ -35,28 +42,13 @@ public abstract class Usuario {
 	
 	@Column(name = "password")
 	private String password;
-
-	public Usuario(String nombre, String apellido, String email, String telefono, String username, String password) {
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.email = email;
-		this.telefono = telefono;
-		this.username = username;
-		this.password = password;
-	}
 	
-	public Usuario() {
+	@OneToMany
+	@JoinColumn(name = "id_cliente_FK")
+    private List<OrdenCompra> ordenes;
 
+	public Cliente() {
+		ordenes = new ArrayList<>();
 	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	
-	
 
 }

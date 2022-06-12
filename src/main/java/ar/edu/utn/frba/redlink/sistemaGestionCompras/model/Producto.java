@@ -5,13 +5,19 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name="producto")
 public class Producto {
 	
 	@Id
-	@Column(name = "idproducto")
-	private int idProducto;
+	@Column(name = "id")
+	@Getter
+	private Integer id;
 	
 	@Column(name = "nombre")
 	private String nombre;
@@ -26,9 +32,9 @@ public class Producto {
 	@Column(name = "stock")
 	private int stock;
 	
-	public Producto(int id, String nombre, String descripcion, double precio, int stock) {
+	public Producto(Integer id, String nombre, String descripcion, double precio, int stock) {
 		super();
-		this.idProducto = id;
+		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.precio = precio;
@@ -38,45 +44,15 @@ public class Producto {
 	public Producto() {
 	}
 
-	public int getIdProducto() {
-		return idProducto;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setIdProducto(int idProducto) {
-		this.idProducto = idProducto;
+	public void setId(Integer id) {
+		this.id = id;
 	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public double getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(double precio) {
-		this.precio = precio;
-	}
-
-	public int getStock() {
-		return stock;
-	}
-
-	public void setStock(int stock) {
-		this.stock = stock;
-	}
+	
+	
 
 
 }
