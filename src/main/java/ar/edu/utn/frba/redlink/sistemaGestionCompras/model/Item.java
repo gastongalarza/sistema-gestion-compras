@@ -5,42 +5,39 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.Setter;
-
-
-@Getter
-@Setter
 @Entity
-@Table(name="item")
+@Table(name = "item")
 public class Item {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="id")
-	private Integer id;
-
-	@Column(name="producto")
+	@Column(name = "id")
+	private int id;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_producto")
 	private Producto producto;
 
-	@Column(name="nombre")
+	@Column(name = "nombre")
 	private String nombre;
 
-	@Column(name="descripcion")
+	@Column(name = "descripcion")
 	private String descripcion;
 
-	@Column(name="cantidad")
-	private int cantidad;
+	@Column(name = "cantidad")
+	private Integer cantidad;
 
-	@Column(name="subtotal")
+	@Column(name = "subtotal")
 	private double subTotal;
 
 	public Item() {
 	}
 	
-	public Item(Integer id, Producto producto, String nombre, String descripcion, int cantidad, double subTotal) {
+	public Item(int id, Producto producto, String nombre, String descripcion, int cantidad, double subTotal) {
 		super();
 		this.id = id;
 		this.producto = producto;
@@ -49,5 +46,54 @@ public class Item {
 		this.cantidad = cantidad;
 		this.subTotal = subTotal;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Producto getProducto() {
+		return producto;
+	}
+
+	public void setProducto(Producto producto) {
+		this.producto = producto;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public int getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+
+	public double getSubTotal() {
+		return subTotal;
+	}
+
+	public void setSubTotal(double subTotal) {
+		this.subTotal = subTotal;
+	}
+	
 
 }

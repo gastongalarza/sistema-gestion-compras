@@ -1,7 +1,4 @@
 package ar.edu.utn.frba.redlink.sistemaGestionCompras.app;
-import ar.edu.utn.frba.redlink.sistemaGestionCompras.model.*;
-
-import ar.edu.utn.frba.redlink.sistemaGestionCompras.service.UsuarioService;
 
 import java.util.List;
 
@@ -12,32 +9,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-public class UsuarioController {
+import ar.edu.utn.frba.redlink.sistemaGestionCompras.model.Producto;
+import ar.edu.utn.frba.redlink.sistemaGestionCompras.service.ProductoService;
 
+
+@RestController
+@RequestMapping("/productos")
+public class ProductoController {
 	@Autowired
-	private UsuarioService usuarioService;
+	private ProductoService productoService;
 
 	@PostMapping("/crear")
-	public Usuario crearUsuario(@RequestBody Usuario usuario) {
-		return usuarioService.crear(usuario);
+	public Producto crearUsuario(@RequestBody Producto prod) {
+		return productoService.crear(prod);
 	}
 
 	@RequestMapping("/listar")
-	public List<Usuario> listarUsuarios() {
-		return usuarioService.listar();
+	public List<Producto> listarUsuarios() {
+		return productoService.listar();
 	}
 
 	@GetMapping("/encontrar/{idUsuario}")
-	public Usuario obtenerUsuario(Usuario usuario) {
-		return usuarioService.encontrarUsuario(usuario);
+	public Producto obtenerUsuario(Producto prod) {
+		return productoService.buscarProducto(prod);
 	}
 	
 	@PostMapping("/eliminar/{idUsuario}")
-	public String eliminarUsuario(Usuario usuario) {
-		usuarioService.eliminar(usuario);
+	public String eliminarUsuario(Producto usuario) {
+		productoService.eliminar(usuario);
 		return "Usuario eliminado con exito";
 	}
+
 }
-
-

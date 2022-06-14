@@ -10,6 +10,8 @@ public abstract class Promocion {
 	
 	protected Producto productoAplicado;
 	
+	protected boolean estaUsado = false;
+	
 
 	public Promocion(Date fechaInicio, Date fechaFinal, Producto productoAplicado)
 	{
@@ -18,8 +20,7 @@ public abstract class Promocion {
 		this.productoAplicado =  productoAplicado;
 	}
 	
-	public boolean aplicable()
-	{
+	public boolean aplicable(){
 		Date hoy = new Date();
 		
 		boolean aplicable = hoy.after(fechaInicio) && hoy.before(fechaFinal);

@@ -4,18 +4,23 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "carrito")
 public class Carrito {
-	
+    
 	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
-	private int id;
+	private Integer id;
 
-	@Column(name = "items")
+	@OneToMany
+	@Column(name = "id_item")
 	private List<Item> items;
 
 	@Column(name = "nombre")
@@ -24,7 +29,7 @@ public class Carrito {
 	@Column(name = "descripcion")
     private String descripcion;
 
-	@Column(name = "precioCompra")
+	@Column(name = "precio_compra")
     private double precioCompra;
 
 	public Carrito(int id, List<Item> items, String nombre, String descripcion, double precioCompra) {

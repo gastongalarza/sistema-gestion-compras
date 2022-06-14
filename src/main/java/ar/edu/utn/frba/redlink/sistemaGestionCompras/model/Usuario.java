@@ -4,19 +4,16 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import javax.persistence.MappedSuperclass;
-import lombok.Getter;
-import lombok.Setter;
 
-
-@Setter
-@Getter
 @MappedSuperclass
 public abstract class Usuario {
 	
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
+	private int id;
 	
 	@Column(name = "nombre")
 	private String nombre;
@@ -35,7 +32,7 @@ public abstract class Usuario {
 	
 	@Column(name = "password")
 	private String password;
-
+	
 	public Usuario(String nombre, String apellido, String email, String telefono, String username, String password) {
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -49,14 +46,61 @@ public abstract class Usuario {
 
 	}
 
-	public Integer getId() {
+	public int getIdUsuario() {
 		return id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIdUsuario(int idUsuario) {
+		this.id = idUsuario;
 	}
-	
-	
 
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	
 }
