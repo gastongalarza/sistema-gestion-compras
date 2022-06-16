@@ -9,15 +9,19 @@ import java.util.List;
 @Table(name = "vendedor")
 public class Vendedor extends Usuario {
 	
-    @OneToMany
-    @JoinColumn(name = "id_orden")
+	@ManyToMany
+	@JoinColumn(name="orden_id")
     private List<OrdenCompra> ordenes;
+	
+	@ManyToMany
+	@JoinColumn(name="producto_id")
+    private List<Producto> productos;
 
+	
 	public Vendedor() {
 		super();
 		ordenes = new ArrayList<>();
 	}
-
 
 	public List<OrdenCompra> getOrdenes() {
 		return ordenes;

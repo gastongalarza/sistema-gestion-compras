@@ -19,7 +19,7 @@ public class Item {
 	private int id;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_producto")
+	@JoinColumn(name = "producto_id")
 	private Producto producto;
 
 	@Column(name = "nombre")
@@ -33,6 +33,10 @@ public class Item {
 
 	@Column(name = "subtotal")
 	private double subTotal;
+	
+	@ManyToOne
+	@JoinColumn(name = "carrito_id")
+	private Carrito carrito;
 
 	public Item() {
 	}
@@ -94,6 +98,7 @@ public class Item {
 	public void setSubTotal(double subTotal) {
 		this.subTotal = subTotal;
 	}
+	
 	
 
 }

@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,8 +20,7 @@ public class Carrito {
 	@Column(name = "id")
 	private Integer id;
 
-	@OneToMany
-	@Column(name = "id_item")
+	@OneToMany(mappedBy="carrito")
 	private List<Item> items;
 
 	@Column(name = "nombre")
@@ -31,6 +31,9 @@ public class Carrito {
 
 	@Column(name = "precio_compra")
     private double precioCompra;
+	
+	@OneToOne(mappedBy="carrito")
+	private OrdenCompra orden;
 
 	public Carrito(int id, List<Item> items, String nombre, String descripcion, double precioCompra) {
 		super();
