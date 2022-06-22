@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import ar.edu.utn.frba.redlink.sistemaGestionCompras.model.Vendedor;
 import ar.edu.utn.frba.redlink.sistemaGestionCompras.repositories.RepoVendedor;
 
@@ -21,19 +22,36 @@ public class VendedorServiceImpl implements VendedorService {
 	}
 
 	@Override
+	@Transactional
 	public List<Vendedor> listar() {
 		return (List<Vendedor>) repo.findAll();
 	}
 
 	@Override
-	public void eliminar(Vendedor usuario) {
-		repo.delete(usuario);	
+	public Vendedor eliminar(int id) {
+		 Vendedor vend = repo.findById(id);
+			
+		 if(vend != null) {
+			repo.delete(vend);
+		 }
+		return vend;
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public Vendedor encontrarUsuario(Vendedor usuario) {
-		return repo.findById(usuario.getIdUsuario());
+	public Vendedor encontrarUsuario(int id) {
+		return repo.findById(id);
+	}
+	
+	@Override
+	@Transactional
+	public Vendedor editar(Vendedor vend) {
+		return repo.save(vend);
+	}
+
+	@Override
+	public Vendedor findByUsername(String username) {
+		return repo.findByUsername(username);
 	}
 
 

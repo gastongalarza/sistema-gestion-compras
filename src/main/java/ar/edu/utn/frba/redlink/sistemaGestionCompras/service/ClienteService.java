@@ -8,8 +8,12 @@ public interface ClienteService {
 	
 	public List<Cliente> listar();
 	
-	public void eliminar(Cliente usuario);
+	public Cliente eliminar(int id);
 	
-	public Cliente encontrarUsuario(Cliente usuario);
+	public Cliente encontrarUsuario(int id);
+	
+	public Cliente editar(Cliente cliente);
+	
+	public Cliente findByUsername(String username);
 
 }

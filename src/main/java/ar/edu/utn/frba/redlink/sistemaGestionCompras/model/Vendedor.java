@@ -17,6 +17,9 @@ public class Vendedor extends Usuario {
 	@JoinColumn(name="producto_id")
     private List<Producto> productos;
 
+	@OneToMany
+	@JoinColumn(name = "proveedor_id")
+	private List<Proveedor> proveedores;
 	
 	public Vendedor() {
 		super();

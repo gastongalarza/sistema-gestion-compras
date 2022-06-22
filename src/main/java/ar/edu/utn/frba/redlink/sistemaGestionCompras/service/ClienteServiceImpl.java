@@ -23,19 +23,42 @@ public class ClienteServiceImpl implements ClienteService {
 	}
 	
 	@Override
+	@Transactional
 	public List<Cliente> listar(){
 		return (List<Cliente>) repo.findAll();
 	}
 
 	@Override
-	public void eliminar(Cliente client) {
-		repo.delete(client);
+	@Transactional
+	public Cliente eliminar(int id) {
+		
+		 Cliente clie = repo.findById(id);
+		
+		 if(clie != null) {
+			repo.delete(clie);
+		 }
+		return clie;
 	}
 
 	@Override
-	@Transactional(readOnly = true)
-	public Cliente encontrarUsuario(Cliente client) {
-		return repo.findById(client.getIdUsuario());
+	@Transactional
+	public Cliente encontrarUsuario(int id) {
+		return repo.findById(id);
 	}
+
+	@Override
+	@Transactional
+	public Cliente editar(Cliente cliente) {
+		return repo.save(cliente);
+	}	
+	
+	@Override
+	@Transactional
+	public Cliente findByUsername(String user) {
+		return repo.findByUsername(user);
+	}
+
+	
+	
 
 }

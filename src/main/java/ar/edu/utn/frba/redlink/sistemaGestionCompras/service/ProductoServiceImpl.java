@@ -1,13 +1,15 @@
 package ar.edu.utn.frba.redlink.sistemaGestionCompras.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ar.edu.utn.frba.redlink.sistemaGestionCompras.model.Producto;
 import ar.edu.utn.frba.redlink.sistemaGestionCompras.repositories.RepoProducto;
 
-import java.util.List;
+import java.util.Collection;
+
 
 @Service
 public class ProductoServiceImpl implements ProductoService {
@@ -26,7 +28,7 @@ public class ProductoServiceImpl implements ProductoService {
 	}
 	
 	@Override
-	public List<Producto> listar(){
+	public Collection<Producto> listar(){
 		return repo.findAll();
 	}
 	

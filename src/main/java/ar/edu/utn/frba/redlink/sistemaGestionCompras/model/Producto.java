@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "producto")
@@ -30,13 +31,17 @@ public class Producto {
 	@Column(name = "stock")
 	private Integer stock;
 	
-	public Producto(int id, String nombre, String descripcion, double precio, Integer stock) {
+	@NotEmpty
+	private String urlImagen;
+	
+	public Producto(int id, String nombre, String descripcion, double precio, Integer stock, String url) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.precio = precio;
 		this.stock = stock;
+		this.urlImagen = url;
 	}
 	
 	public Producto() {
@@ -82,5 +87,12 @@ public class Producto {
 		this.stock = stock;
 	}
 
+	public String getUrlImagen() {
+		return urlImagen;
+	}
 
+	public void setUrlImagen(String urlImagen) {
+		this.urlImagen = urlImagen;
+	}
+	
 }

@@ -11,8 +11,12 @@ public interface RepoCliente extends PagingAndSortingRepository<Cliente, Integer
 
 	List<Cliente> findAll();
 
-	void delete(Cliente client);
+	void delete(Cliente clie);
 
 	Cliente findById(int id);
+	
+	Cliente save(Cliente cliente);
+	
+	Cliente findByUsername(String user);
 
 }

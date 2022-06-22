@@ -22,12 +22,6 @@ public class Item {
 	@JoinColumn(name = "producto_id")
 	private Producto producto;
 
-	@Column(name = "nombre")
-	private String nombre;
-
-	@Column(name = "descripcion")
-	private String descripcion;
-
 	@Column(name = "cantidad")
 	private Integer cantidad;
 
@@ -41,14 +35,13 @@ public class Item {
 	public Item() {
 	}
 	
-	public Item(int id, Producto producto, String nombre, String descripcion, int cantidad, double subTotal) {
+	public Item(int id, Producto producto, int cantidad, double subTotal, Carrito carrito) {
 		super();
 		this.id = id;
 		this.producto = producto;
-		this.nombre = nombre;
-		this.descripcion = descripcion;
 		this.cantidad = cantidad;
 		this.subTotal = subTotal;
+		this.carrito= carrito;
 	}
 
 	public int getId() {
@@ -67,22 +60,6 @@ public class Item {
 		this.producto = producto;
 	}
 
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
 	public int getCantidad() {
 		return cantidad;
 	}
@@ -98,7 +75,17 @@ public class Item {
 	public void setSubTotal(double subTotal) {
 		this.subTotal = subTotal;
 	}
-	
-	
+
+	public Carrito getCarrito() {
+		return carrito;
+	}
+
+	public void setCarrito(Carrito carrito) {
+		this.carrito = carrito;
+	}
+
+	public void setCantidad(Integer cantidad) {
+		this.cantidad = cantidad;
+	}
 
 }

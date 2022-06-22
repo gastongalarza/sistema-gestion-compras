@@ -33,17 +33,19 @@ public abstract class Usuario {
 	@Column(name = "password")
 	private String password;
 	
-	public Usuario(String nombre, String apellido, String email, String telefono, String username, String password) {
+	
+	public Usuario() {
+
+	}
+
+	public Usuario(int id, String nombre, String apellido, String email, String telefono, String username, String password) {
+		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.email = email;
 		this.telefono = telefono;
 		this.username = username;
 		this.password = password;
-	}
-	
-	public Usuario() {
-
 	}
 
 	public int getIdUsuario() {

@@ -5,38 +5,52 @@ import ar.edu.utn.frba.redlink.sistemaGestionCompras.service.ClienteService;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin(origins= "http://localhost:4200/")
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("/api/usuarios")
 public class ClienteController {
 
 	@Autowired
 	private ClienteService clienteService;
 
 	@PostMapping("/crear")
-	public Usuario crearUsuario(@RequestBody Cliente usuario) {
+	public Cliente crearUsuario(@RequestBody Cliente usuario) {
 		return clienteService.crear(usuario);
 	}
 
-	@RequestMapping("/listar")
+	@GetMapping("/listar")
 	public List<Cliente> listarUsuarios() {
 		return clienteService.listar();
 	}
 
-	@GetMapping("/encontrar/{idUsuario}")
-	public Usuario obtenerUsuario(Cliente usuario) {
-		return clienteService.encontrarUsuario(usuario);
+	@GetMapping(path = {"/{id}"})
+	public Cliente obtenerUsuario(@PathVariable("id")int id) {
+		return clienteService.encontrarUsuario(id);
 	}
 	
-	@PostMapping("/eliminar/{idUsuario}")
-	public String eliminarUsuario(Cliente usuario) {
-		clienteService.eliminar(usuario);
-		return "Usuario eliminado con exito";
+	@DeleteMapping(path = {"/{id}"})
+	public Cliente eliminarUsuario(@PathVariable("id") int id) {
+		return clienteService.eliminar(id);
+			
+	}
+	@PutMapping(path = {"/{username}"})
+	public Cliente editar(@RequestBody Cliente c, @PathVariable("username") String username){
+		c.setUsername(username);
+		return clienteService.editar(c);
+	}
+	@GetMapping(path = {"/encontrar/{username}"})
+	public Cliente obtenerUsuarioPorUsername(@PathVariable("username")String user) {
+		return clienteService.findByUsername(user);
 	}
 }
 

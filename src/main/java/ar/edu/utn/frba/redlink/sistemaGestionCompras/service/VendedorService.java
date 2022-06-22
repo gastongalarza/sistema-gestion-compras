@@ -10,8 +10,12 @@ public interface VendedorService {
 	
 	public List<Vendedor> listar();
 	
-	public void eliminar(Vendedor usuario);
+	public Vendedor eliminar(int id);
 	
-	public Vendedor encontrarUsuario(Vendedor usuario);
+	public Vendedor encontrarUsuario(int id);
+	
+	public Vendedor editar(Vendedor vend);
+	
+	public Vendedor findByUsername(String username);
 
 }
