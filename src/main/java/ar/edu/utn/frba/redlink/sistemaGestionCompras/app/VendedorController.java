@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import ar.edu.utn.frba.redlink.sistemaGestionCompras.model.Cliente;
 import ar.edu.utn.frba.redlink.sistemaGestionCompras.model.Vendedor;
 import ar.edu.utn.frba.redlink.sistemaGestionCompras.service.VendedorService;
 
@@ -23,6 +25,10 @@ public class VendedorController {
 	@Autowired
 	private VendedorService vendedorService;
 
+	@GetMapping("/listar")
+	public List<Vendedor> listarUsuarios() {
+		return vendedorService.listar();
+	}
 	
 	@PostMapping("/crear")
 	public Vendedor crearVendedor(@RequestBody Vendedor vend) {

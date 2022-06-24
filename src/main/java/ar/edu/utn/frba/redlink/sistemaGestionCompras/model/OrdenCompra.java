@@ -1,5 +1,6 @@
 package ar.edu.utn.frba.redlink.sistemaGestionCompras.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -26,33 +28,26 @@ public class OrdenCompra {
 	@Column(name = "fecha")
 	private Date fechaOrden;
 
-	@OneToOne
-	@JoinColumn(name= "carrito_id")
-	private Carrito carrito;
+	@OneToMany
+	@JoinColumn(name= "item_id")
+	private List<Item> items;
 
 	@ManyToOne
 	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
-
 	
-	public OrdenCompra(int idOrden, Date fechaOrden, Carrito carrito, Cliente client) {
+
+	public OrdenCompra(int idOrden, Date fechaOrden, Cliente client) {
 		super();
 		this.id = idOrden;
 		this.fechaOrden = fechaOrden;
-		this.carrito = carrito;
+		items = new ArrayList<>();
 		this.cliente = client;
 	}
 	
 	public OrdenCompra() {
 	}
 
-	public int getIdOrden() {
-		return id;
-	}
-
-	public void setIdOrden(int idOrden) {
-		this.id = idOrden;
-	}
 
 	public Date getFechaOrden() {
 		return fechaOrden;
@@ -62,12 +57,28 @@ public class OrdenCompra {
 		this.fechaOrden = fechaOrden;
 	}
 
-	public Carrito getCarrito() {
-		return carrito;
+	public int getId() {
+		return id;
 	}
 
-	public void setCarrito(Carrito carrito) {
-		this.carrito = carrito;
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public List<Item> getItems() {
+		return items;
+	}
+
+	public void setItems(List<Item> items) {
+		this.items = items;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	public Cliente getUsuario() {

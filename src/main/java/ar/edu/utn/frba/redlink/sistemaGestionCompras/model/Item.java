@@ -28,20 +28,17 @@ public class Item {
 	@Column(name = "subtotal")
 	private double subTotal;
 	
-	@ManyToOne
-	@JoinColumn(name = "carrito_id")
-	private Carrito carrito;
 
 	public Item() {
 	}
 	
-	public Item(int id, Producto producto, int cantidad, double subTotal, Carrito carrito) {
+	public Item(int id, Producto producto, int cantidad, double subTotal) {
 		super();
 		this.id = id;
 		this.producto = producto;
 		this.cantidad = cantidad;
 		this.subTotal = subTotal;
-		this.carrito= carrito;
+
 	}
 
 	public int getId() {
@@ -76,13 +73,6 @@ public class Item {
 		this.subTotal = subTotal;
 	}
 
-	public Carrito getCarrito() {
-		return carrito;
-	}
-
-	public void setCarrito(Carrito carrito) {
-		this.carrito = carrito;
-	}
 
 	public void setCantidad(Integer cantidad) {
 		this.cantidad = cantidad;
